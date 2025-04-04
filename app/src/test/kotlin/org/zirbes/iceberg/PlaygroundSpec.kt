@@ -1,14 +1,17 @@
 package org.zirbes.iceberg
 
 import io.kotest.core.spec.style.ShouldSpec
+import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
 import java.time.LocalDate
-import org.zirbes.iceberg.dao.IcebergRepositoryConfig
+import org.zirbes.iceberg.config.RepositoryConfig
 import org.zirbes.iceberg.dao.ProjectRepository
+import org.zirbes.iceberg.model.Priority
+import org.zirbes.iceberg.model.Project
 
 class PlaygroundSpec : ShouldSpec({
 
-    val config = IcebergRepositoryConfig()
+    val config = RepositoryConfig()
 
     val repository = ProjectRepository(config)
 
@@ -34,16 +37,24 @@ class PlaygroundSpec : ShouldSpec({
         println("Project created: $closet")
     }
 
-    should("be able to retrieve projects") {
-        val moveInDate = LocalDate.parse("2025-05-15")
+    should("be able to retrieve a project") {
         val retrievedProject = repository.get(entry.id)
+
         println("Retrieved project: $retrievedProject")
 
+        retrievedProject.shouldNotBeNull()
+        retrievedProject.name shouldBe entry.name
+    }
+
+    should("be able to list projects") {
         val allProjects = repository.list()
         println("All projects: $allProjects")
 
         allProjects.size shouldBe 2
+    }
 
+    should("be able to find projects") {
+        val moveInDate = LocalDate.parse("2025-05-15")
         val lowPriorityProjects = repository.findPriorityLessThan(2)
         println("Low priority projects: $lowPriorityProjects")
 
@@ -54,9 +65,8 @@ class PlaygroundSpec : ShouldSpec({
         upcomingProjects.size shouldBe 1
     }
 
-    should("be able to delete projects") {
+    should("be able to delete a project") {
         repository.delete(entry.id)
-
         val remaining = repository.list()
 
         remaining.size shouldBe 1

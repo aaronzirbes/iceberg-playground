@@ -1,12 +1,13 @@
 package org.zirbes.iceberg
 
 import java.time.LocalDate
-import org.zirbes.iceberg.dao.IcebergRepositoryConfig
+import org.zirbes.iceberg.config.RepositoryConfig
 import org.zirbes.iceberg.dao.ProjectRepository
+import org.zirbes.iceberg.model.Priority
 
 class Playground {
 
-    val config = IcebergRepositoryConfig()
+    val config = RepositoryConfig()
 
     fun run() {
         println("🏃Running.")

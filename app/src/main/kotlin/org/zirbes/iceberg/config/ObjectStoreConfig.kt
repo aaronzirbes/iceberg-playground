@@ -1,6 +1,6 @@
-package org.zirbes.iceberg
+package org.zirbes.iceberg.config
 
-data class ObjectStorageCreds(
+data class ObjectStoreConfig(
     val endpoint: String,
     val accessKey: String,
     val secretKey: String,
@@ -8,7 +8,7 @@ data class ObjectStorageCreds(
     val sslEnabled: Boolean = false,
 ) {
     companion object {
-        val LOCAL = ObjectStorageCreds(
+        val LOCAL = ObjectStoreConfig(
             endpoint = "http://127.0.0.1:9006",
             accessKey = "iceberg",
             secretKey = "playground",

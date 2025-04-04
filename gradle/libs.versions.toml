@@ -7,37 +7,49 @@ hadoop = "3.4.1"
 iceberg = "1.4.2"
 jupiter = "5.11.4"
 kotest = "5.9.1"
+kotlin-core = "2.1.20"
+minio = "8.5.17"
 mockk = "1.13.16"
 spotless = "7.0.2"
-kotlin-core = "2.1.20"
+spark = "3.3.2"
+slf4j-simple = "2.0.17"
 
 [libraries]
-guava = { module = "com.google.guava:guava", version.ref = "guava" }
-hadoop-aws = { module = "org.apache.hadoop:hadoop-aws", version.ref = "hadoop"}
-hadoop-client = { module = "org.apache.hadoop:hadoop-client", version.ref = "hadoop"}
-hadoop-common = { module = "org.apache.hadoop:hadoop-common", version.ref = "hadoop"}
-iceberg-aws = { module = "org.apache.iceberg:iceberg-aws", version.ref = "iceberg" }
-iceberg-core = { module = "org.apache.iceberg:iceberg-core", version.ref = "iceberg" }
-iceberg-parquet = { module = "org.apache.iceberg:iceberg-parquet", version.ref = "iceberg" }
-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jupiter" }
-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "jupiter" }
-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "jupiter" }
-kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
-kotest-assertions-json = { module = "io.kotest:kotest-assertions-json", version.ref = "kotest" }
-kotest-data = { module = "io.kotest:kotest-framework-datatest", version.ref = "kotest" }
-kotest-extensions = { module = "io.kotest:kotest-extensions", version.ref = "kotest" }
-kotest-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
-kotest-property = { module = "io.kotest:kotest-property-jvm", version.ref = "kotest" }
-mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+guava                  = { module = "com.google.guava:guava", version.ref                            = "guava" }
+hadoop-aws             = { module = "org.apache.hadoop:hadoop-aws", version.ref                      = "hadoop" }
+hadoop-client          = { module = "org.apache.hadoop:hadoop-client", version.ref                   = "hadoop" }
+hadoop-common          = { module = "org.apache.hadoop:hadoop-common", version.ref                   = "hadoop" }
+
+iceberg-aws            = { module = "org.apache.iceberg:iceberg-aws", version.ref                    = "iceberg" }
+iceberg-core           = { module = "org.apache.iceberg:iceberg-core", version.ref                   = "iceberg" }
+iceberg-parquet        = { module = "org.apache.iceberg:iceberg-parquet", version.ref                = "iceberg" }
+iceberg-spark          = { module = "org.apache.iceberg:iceberg-spark-runtime-3.3_2.13", version.ref = "iceberg" }
+
+jupiter-api            = { module = "org.junit.jupiter:junit-jupiter-api", version.ref               = "jupiter" }
+jupiter-engine         = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref            = "jupiter" }
+jupiter-params         = { module = "org.junit.jupiter:junit-jupiter-params", version.ref            = "jupiter" }
+kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref                  = "kotest" }
+kotest-assertions-json = { module = "io.kotest:kotest-assertions-json", version.ref                  = "kotest" }
+kotest-data            = { module = "io.kotest:kotest-framework-datatest", version.ref               = "kotest" }
+kotest-extensions      = { module = "io.kotest:kotest-extensions", version.ref                       = "kotest" }
+kotest-junit5          = { module = "io.kotest:kotest-runner-junit5", version.ref                    = "kotest" }
+kotest-property        = { module = "io.kotest:kotest-property-jvm", version.ref                     = "kotest" }
+slf4j-simple           = { module = "org.slf4j:slf4j-simple", version.ref                            = "slf4j-simple" }
+
+minio-client           = { module = "io.minio:minio", version.ref                                    = "minio" }
+mockk                  = { module = "io.mockk:mockk", version.ref                                    = "mockk" }
+spark-sql              = { module = "org.apache.spark:spark-sql_2.13", version.ref                   = "spark" }
 
 [bundles]
 iceberg = [
     "iceberg-core",
     "iceberg-parquet",
     "iceberg-aws",
+    "iceberg-spark",
     "hadoop-common",
     "hadoop-client",
     "hadoop-aws",
+    "spark-sql"
 ]
 testing = [
     "jupiter-api",
