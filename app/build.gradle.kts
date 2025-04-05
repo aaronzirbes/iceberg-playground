@@ -21,7 +21,9 @@ dependencies {
     // This dependency is used by the application.
     implementation(libs.guava)
     implementation(libs.bundles.iceberg)
+    implementation(libs.minio.client)
 
+    testImplementation(libs.slf4j.simple)
     testImplementation(libs.bundles.testing)
 
 }

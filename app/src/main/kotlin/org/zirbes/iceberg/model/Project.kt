@@ -1,13 +1,13 @@
-package org.zirbes.iceberg
+package org.zirbes.iceberg.model
 
 import java.time.LocalDate
 
 data class Project(
     val id: Int,
     val name: String,
-    val description: String,
+    val description: String?,
     val priority: Priority,
-    val due: LocalDate,
+    val due: LocalDate?,
 )
 
 enum class Priority(i: Int) {
