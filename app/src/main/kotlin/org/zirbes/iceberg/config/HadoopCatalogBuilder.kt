@@ -7,7 +7,7 @@ class HadoopCatalogBuilder(config: RepositoryConfig) {
 
     private val location = config.location
 
-    internal val settings = mapOf(
+    private val settings: Map<String, String> = mapOf(
         "fs.s3a.endpoint" to config.creds.endpoint,
         "fs.s3a.access.key" to config.creds.accessKey,
         "fs.s3a.secret.key" to config.creds.secretKey,
